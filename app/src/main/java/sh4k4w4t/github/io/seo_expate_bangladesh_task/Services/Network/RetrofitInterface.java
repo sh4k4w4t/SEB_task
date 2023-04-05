@@ -23,6 +23,6 @@ public interface RetrofitInterface {
     @GET("posts/{id}/comments")
     Call<List<Comment>> allComments(@Path("id") String id);
 
-    @POST("posts/{id}/comments")
-    Call<Comment> postComments(@Path("id") String id, @Header("Authorization") String bearerToken, @Body RequestBody requestBody);
+//    @POST("posts/{id}/comments")
+//    Call<Comment> postComments(@Path("id") String id, @Header("Authorization") String bearerToken, @Body RequestBody requestBody);
 }

@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-
-import com.android.volley.RequestQueue;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +24,7 @@ public class PostDeatilsActivity extends AppCompatActivity {
     sh4k4w4t.github.io.seo_expate_bangladesh_task.databinding.ActivityPostDeatilsBinding binding;
     PostDetailsViewModel viewModel;
     AllCommentsAdapter allCommentsAdapter;
+    ProgressDialog progressDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -49,12 +50,26 @@ public class PostDeatilsActivity extends AppCompatActivity {
         });
 
         binding.submitCommentInputLayout.setEndIconOnClickListener(view -> {
+            progressDialogModule();
             String token = "e3b2d0c34b84c2774106ebaa4946e7b5b7ef0cc64a68036025820d4a8c3cc8a9";
             PostDetailsRepositoryImplementation implementation = new PostDetailsRepositoryImplementation();
             implementation.postComment(getIntent().getStringExtra("id") + "", token, "Unknown Person", "unknown@email.com", Objects.requireNonNull(binding.textComment.getText()).toString().trim() + "");
+            progressDialog.dismiss();
+            binding.textComment.setText("");
+            Toast.makeText(this, "Comment uploaded.", Toast.LENGTH_SHORT).show();
         });
 
         binding.backButton.setOnClickListener(view -> startActivity(new Intent(PostDeatilsActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));
+    }
+
+    private void progressDialogModule() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMax(100);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 
 }

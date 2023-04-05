@@ -13,15 +13,16 @@ import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructur
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Network.RetrofitAPI;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Network.RetrofitInterface;
 
-public class AllPostsListRepositoryImplementation implements AllPostsListRepository{
+public class AllPostsListRepositoryImplementation implements AllPostsListRepository {
 
     private List<PostStructure> allPostsList;
     private MutableLiveData<List<PostStructure>> allMutablePostsList;
 
     private static AllPostsListRepositoryImplementation instance;
-    public static AllPostsListRepositoryImplementation getInstance(){
-        if (instance==null){
-            instance= new AllPostsListRepositoryImplementation();
+
+    public static AllPostsListRepositoryImplementation getInstance() {
+        if (instance == null) {
+            instance = new AllPostsListRepositoryImplementation();
         }
         return instance;
     }
@@ -29,22 +30,22 @@ public class AllPostsListRepositoryImplementation implements AllPostsListReposit
     @Override
     public MutableLiveData<List<PostStructure>> getAllPostsList() {
 
-        if (allMutablePostsList==null){
-            allMutablePostsList= new MutableLiveData<>();
+        if (allMutablePostsList == null) {
+            allMutablePostsList = new MutableLiveData<>();
         }
 
-        RetrofitInterface retrofitInterface= RetrofitAPI.getRetrofitInterface();
-        Call<List<PostStructure>> callData= retrofitInterface.posts();
+        RetrofitInterface retrofitInterface = RetrofitAPI.getRetrofitInterface();
+        Call<List<PostStructure>> callData = retrofitInterface.posts();
         callData.clone().enqueue(new Callback<List<PostStructure>>() {
             @Override
             public void onResponse(@NonNull Call<List<PostStructure>> call, @NonNull Response<List<PostStructure>> response) {
                 try {
-                    if (response.isSuccessful()){
-                        allPostsList= new ArrayList<>();
-                        allPostsList= response.body();
+                    if (response.isSuccessful()) {
+                        allPostsList = new ArrayList<>();
+                        allPostsList = response.body();
                         allMutablePostsList.postValue(allPostsList);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     allMutablePostsList.postValue(null);
                 }
             }

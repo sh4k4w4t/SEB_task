@@ -12,6 +12,4 @@ import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructur
 public interface PostDetailsRepository {
     MutableLiveData<PostStructure> postDetails(String id);
     MutableLiveData<List<Comment>> allComments(String id);
-
-    MutableLiveData<Comment> postComment(String id, String token, String name, String email, String body);
 }

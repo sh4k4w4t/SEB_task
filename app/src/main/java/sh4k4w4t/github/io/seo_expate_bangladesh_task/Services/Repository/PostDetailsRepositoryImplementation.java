@@ -30,9 +30,6 @@ public class PostDetailsRepositoryImplementation implements PostDetailsRepositor
     private List<Comment> allComments;
     private MutableLiveData<List<Comment>> mutableAllComments;
 
-//    private Comment postComment;
-//    private MutableLiveData<Comment> mutablePostComment;
-
     private static PostDetailsRepositoryImplementation instance;
 
     public static PostDetailsRepositoryImplementation getInstance() {

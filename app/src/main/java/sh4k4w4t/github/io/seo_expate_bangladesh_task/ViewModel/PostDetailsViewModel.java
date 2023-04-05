@@ -20,13 +20,14 @@ public class PostDetailsViewModel extends AndroidViewModel {
 
     public PostDetailsViewModel(@NonNull Application application) {
         super(application);
-        repository= PostDetailsRepositoryImplementation.getInstance();
+        repository = PostDetailsRepositoryImplementation.getInstance();
     }
-    public MutableLiveData<PostStructure> postDetails(String id){
+
+    public MutableLiveData<PostStructure> postDetails(String id) {
         return repository.postDetails(id);
     }
 
-    public MutableLiveData<List<Comment>> allComments(String id){
+    public MutableLiveData<List<Comment>> allComments(String id) {
         return repository.allComments(id);
     }
 

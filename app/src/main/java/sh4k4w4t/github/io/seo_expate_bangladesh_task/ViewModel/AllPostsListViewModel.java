@@ -17,10 +17,10 @@ public class AllPostsListViewModel extends AndroidViewModel {
 
     public AllPostsListViewModel(@NonNull Application application) {
         super(application);
-        repository= AllPostsListRepositoryImplementation.getInstance();
+        repository = AllPostsListRepositoryImplementation.getInstance();
     }
 
-    public MutableLiveData<List<PostStructure>> allPosts(){
+    public MutableLiveData<List<PostStructure>> allPosts() {
         return repository.getAllPostsList();
     }
 

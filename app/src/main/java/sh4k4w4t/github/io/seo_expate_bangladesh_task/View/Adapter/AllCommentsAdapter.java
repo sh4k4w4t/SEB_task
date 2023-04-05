@@ -33,7 +33,7 @@ public class AllCommentsAdapter extends RecyclerView.Adapter<AllCommentsAdapter.
         Comment comment = allComments.get(position);
         holder.binding.commentTitle.setText(comment.getName().trim());
         holder.binding.commentDetails.setText(comment.getBody().trim());
-        Log.d("TAG", "onBindViewHolder: "+ comment);
+        Log.d("TAG", "onBindViewHolder: " + comment);
     }
 
     @Override

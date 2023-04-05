@@ -40,12 +40,12 @@ public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.
         holder.binding.postTitle.setText(postStructure.getTitle().trim());
         try {
             String first50WordsOfBody = postStructure.getBody().trim().substring(0, Math.min(postStructure.getBody().trim().length(), 150));
-            holder.binding.postBody.setText(first50WordsOfBody+".....");
-        }catch (Exception e){
-            holder.binding.postBody.setText(postStructure.getBody().trim()+".....");
+            holder.binding.postBody.setText(first50WordsOfBody + ".....");
+        } catch (Exception e) {
+            holder.binding.postBody.setText(postStructure.getBody().trim() + ".....");
         }
         holder.binding.postDetailsLearnMore.setOnClickListener(view -> {
-            Intent i = new Intent(context.getApplicationContext(),PostDeatilsActivity.class);
+            Intent i = new Intent(context.getApplicationContext(), PostDeatilsActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("id", postStructure.getId().toString().trim());
             context.startActivity(i);
@@ -63,9 +63,10 @@ public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
         CustomLayoutForIndividualPostBinding binding;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding= CustomLayoutForIndividualPostBinding.bind(itemView);
+            binding = CustomLayoutForIndividualPostBinding.bind(itemView);
         }
     }
 }

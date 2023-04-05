@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding= ActivityMainBinding.inflate(getLayoutInflater());
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(activityMainBinding.getRoot());
 
@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.allPostsRecycleView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         progressDialogModule();
-        allPostsListViewModel= new ViewModelProvider(MainActivity.this).get(AllPostsListViewModel.class);
+        allPostsListViewModel = new ViewModelProvider(MainActivity.this).get(AllPostsListViewModel.class);
         allPostsListViewModel.allPosts().observe(MainActivity.this, postStructureModels -> {
             try {
-                allPostListAdapter= new AllPostListAdapter(postStructureModels,MainActivity.this);
+                allPostListAdapter = new AllPostListAdapter(postStructureModels, MainActivity.this);
                 activityMainBinding.allPostsRecycleView.setAdapter(allPostListAdapter);
                 progressDialog.dismiss();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 progressDialog.dismiss();
             }
