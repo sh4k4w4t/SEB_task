@@ -34,7 +34,7 @@ public class AllPostsListRepositoryImplementation implements AllPostsListReposit
         }
 
         RetrofitInterface retrofitInterface= RetrofitAPI.getRetrofitInterface();
-        Call<List<PostStructureModel>> callData= retrofitInterface.allPostsList();
+        Call<List<PostStructureModel>> callData= retrofitInterface.posts();
         callData.clone().enqueue(new Callback<List<PostStructureModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<PostStructureModel>> call, @NonNull Response<List<PostStructureModel>> response) {

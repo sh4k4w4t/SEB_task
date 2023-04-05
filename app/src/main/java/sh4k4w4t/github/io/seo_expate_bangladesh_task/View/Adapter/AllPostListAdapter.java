@@ -2,6 +2,7 @@ package sh4k4w4t.github.io.seo_expate_bangladesh_task.View.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.R;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructureModel;
+import sh4k4w4t.github.io.seo_expate_bangladesh_task.View.UI.PostDeatilsActivity;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.databinding.CustomLayoutForIndividualPostBinding;
 
 public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.CustomViewHolder> {
@@ -43,7 +45,12 @@ public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.
         }catch (Exception e){
             holder.binding.postBody.setText(postStructureModel.getBody().trim()+".....");
         }
-        holder.binding.postDetailsLearnMore.setOnClickListener(view -> Toast.makeText(context.getApplicationContext(), "Under Construction..", Toast.LENGTH_SHORT).show());
+        holder.binding.postDetailsLearnMore.setOnClickListener(view -> {
+            Intent i = new Intent(context.getApplicationContext(),PostDeatilsActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("id",postStructureModel.getId().toString().trim());
+            context.startActivity(i);
+        });
     }
 
     @Override
