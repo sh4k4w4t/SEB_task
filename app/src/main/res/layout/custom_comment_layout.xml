@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D9D9D9"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="63dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:src="@drawable/baseline_person_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/commentTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/actor"
+            android:text="User Name is here"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/userImage"
+            app:layout_constraintTop_toTopOf="@+id/userImage"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/commentDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/acme"
+            android:text="Lorem ispum dolar sit amit.Lorem ispum dolar sit amit.Lorem ispum dolar sit amit.Lorem ispum dolar sit amit.Lorem ispum dolar sit amit."
+            android:textColor="#333333"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/commentTitle"
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
