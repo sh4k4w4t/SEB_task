@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.R;
-import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.CommentModel;
+import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.Comment;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.databinding.CustomCommentLayoutBinding;
 
 public class AllCommentsAdapter extends RecyclerView.Adapter<AllCommentsAdapter.CustomViewHolder> {
-    List<CommentModel> allComments;
+    List<Comment> allComments;
 
-    public AllCommentsAdapter(List<CommentModel> allComments) {
+    public AllCommentsAdapter(List<Comment> allComments) {
         this.allComments = allComments;
     }
 
@@ -30,10 +30,10 @@ public class AllCommentsAdapter extends RecyclerView.Adapter<AllCommentsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull AllCommentsAdapter.CustomViewHolder holder, int position) {
-        CommentModel commentModel = allComments.get(position);
-        holder.binding.commentTitle.setText(commentModel.getName().trim());
-        holder.binding.commentDetails.setText(commentModel.getBody().trim());
-        Log.d("TAG", "onBindViewHolder: "+ commentModel);
+        Comment comment = allComments.get(position);
+        holder.binding.commentTitle.setText(comment.getName().trim());
+        holder.binding.commentDetails.setText(comment.getBody().trim());
+        Log.d("TAG", "onBindViewHolder: "+ comment);
     }
 
     @Override

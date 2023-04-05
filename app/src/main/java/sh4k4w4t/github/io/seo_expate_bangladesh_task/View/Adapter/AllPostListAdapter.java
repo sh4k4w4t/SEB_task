@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.R;
-import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructureModel;
+import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructure;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.View.UI.PostDeatilsActivity;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.databinding.CustomLayoutForIndividualPostBinding;
 
 public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.CustomViewHolder> {
-    List<PostStructureModel> allPostLists;
+    List<PostStructure> allPostLists;
     Context context;
 
-    public AllPostListAdapter(List<PostStructureModel> allPostLists, Context context) {
+    public AllPostListAdapter(List<PostStructure> allPostLists, Context context) {
         this.allPostLists = allPostLists;
         this.context = context;
     }
@@ -37,18 +36,18 @@ public class AllPostListAdapter extends RecyclerView.Adapter<AllPostListAdapter.
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        PostStructureModel postStructureModel= allPostLists.get(position);
-        holder.binding.postTitle.setText(postStructureModel.getTitle().trim());
+        PostStructure postStructure = allPostLists.get(position);
+        holder.binding.postTitle.setText(postStructure.getTitle().trim());
         try {
-            String first50WordsOfBody = postStructureModel.getBody().trim().substring(0, Math.min(postStructureModel.getBody().trim().length(), 150));
+            String first50WordsOfBody = postStructure.getBody().trim().substring(0, Math.min(postStructure.getBody().trim().length(), 150));
             holder.binding.postBody.setText(first50WordsOfBody+".....");
         }catch (Exception e){
-            holder.binding.postBody.setText(postStructureModel.getBody().trim()+".....");
+            holder.binding.postBody.setText(postStructure.getBody().trim()+".....");
         }
         holder.binding.postDetailsLearnMore.setOnClickListener(view -> {
             Intent i = new Intent(context.getApplicationContext(),PostDeatilsActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.putExtra("id",postStructureModel.getId().toString().trim());
+            i.putExtra("id", postStructure.getId().toString().trim());
             context.startActivity(i);
         });
     }

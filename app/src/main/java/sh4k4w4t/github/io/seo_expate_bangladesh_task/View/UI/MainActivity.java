@@ -1,7 +1,6 @@
 package sh4k4w4t.github.io.seo_expate_bangladesh_task.View.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -9,9 +8,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import java.util.List;
-
-import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructureModel;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.View.Adapter.AllPostListAdapter;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.ViewModel.AllPostsListViewModel;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.databinding.ActivityMainBinding;

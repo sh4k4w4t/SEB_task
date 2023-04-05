@@ -3,7 +3,7 @@ package sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PostStructureModel {
+public class PostStructure {
     @SerializedName("id")
     @Expose
     private Integer id;

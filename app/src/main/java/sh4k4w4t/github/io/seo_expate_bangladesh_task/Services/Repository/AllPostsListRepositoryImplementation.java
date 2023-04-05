@@ -9,14 +9,14 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructureModel;
+import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Model.PostStructure;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Network.RetrofitAPI;
 import sh4k4w4t.github.io.seo_expate_bangladesh_task.Services.Network.RetrofitInterface;
 
 public class AllPostsListRepositoryImplementation implements AllPostsListRepository{
 
-    private List<PostStructureModel> allPostsList;
-    private MutableLiveData<List<PostStructureModel>> allMutablePostsList;
+    private List<PostStructure> allPostsList;
+    private MutableLiveData<List<PostStructure>> allMutablePostsList;
 
     private static AllPostsListRepositoryImplementation instance;
     public static AllPostsListRepositoryImplementation getInstance(){
@@ -27,17 +27,17 @@ public class AllPostsListRepositoryImplementation implements AllPostsListReposit
     }
 
     @Override
-    public MutableLiveData<List<PostStructureModel>> getAllPostsList() {
+    public MutableLiveData<List<PostStructure>> getAllPostsList() {
 
         if (allMutablePostsList==null){
             allMutablePostsList= new MutableLiveData<>();
         }
 
         RetrofitInterface retrofitInterface= RetrofitAPI.getRetrofitInterface();
-        Call<List<PostStructureModel>> callData= retrofitInterface.posts();
-        callData.clone().enqueue(new Callback<List<PostStructureModel>>() {
+        Call<List<PostStructure>> callData= retrofitInterface.posts();
+        callData.clone().enqueue(new Callback<List<PostStructure>>() {
             @Override
-            public void onResponse(@NonNull Call<List<PostStructureModel>> call, @NonNull Response<List<PostStructureModel>> response) {
+            public void onResponse(@NonNull Call<List<PostStructure>> call, @NonNull Response<List<PostStructure>> response) {
                 try {
                     if (response.isSuccessful()){
                         allPostsList= new ArrayList<>();
@@ -50,7 +50,7 @@ public class AllPostsListRepositoryImplementation implements AllPostsListReposit
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<PostStructureModel>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<PostStructure>> call, @NonNull Throwable t) {
                 allMutablePostsList.postValue(null);
             }
         });
